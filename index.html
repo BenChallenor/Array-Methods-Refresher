@@ -6,6 +6,7 @@
 </head>
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+  <ol id="bands"></ol>
   <script>
 
 
@@ -73,12 +74,12 @@
     // const category = document.querySelector('.mw-category');
     // // select the class containing the whole list
     // const links = Array.from(category.querySelectorAll('a'));
-    // // select all the links in the class in to an array
+    // // // select all the links in the class in to an array
     // const de = links
     //             .map(link => link.textContent)
-    //             // selects just the text content
+    // //             // selects just the text content
     //             .filter(streetName => streetName.includes('de'));
-                // selets the text content containing 'de'
+    //             // selets the text content containing 'de'
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
@@ -166,6 +167,30 @@
     console.log(index);
     comments.splice(index, 1);
     console.table(comments);
+
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+    // 13. sort the bands alphabetically ignoring 'the', 'an' & 'a'
+    function strip(bandName) {
+      return bandName.replace(/^(a |the |an )/i, '').trim();
+    }
+    // function to replace words to ignore with ''
+    
+    // const sortedBands = bands.sort((a, b) => {
+      // // if(strip(a) > strip(b)) {
+      // //   return 1;
+      // // } else {
+      // //   return -1;
+      // }
+      // });
+    const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+    console.table(sortedBands);
+
+    document.querySelector('#bands').innerHTML = sortedBands
+      .map(band => `<li>${band}</li>`)
+      .join('');
+
   </script>
+
 </body>
 </html>
