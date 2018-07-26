@@ -138,7 +138,6 @@
       const currentYear = (new Date()).getFullYear();
       return currentYear - person.year >= 19;
     });
-
     console.log(isAdult);
 
     // 10. Array.prototype.every() // is everyone 19 or older?
@@ -147,15 +146,26 @@
       const currentYear = (new Date()).getFullYear();
       return currentYear - person.year >= 19;
     });
-
     console.log(allAdults);
-    // Array.prototype.find()
+
+    // Array.prototype.find() -> like filter but only returns the first item it finds
     // Find is like filter, but instead returns just the one you are looking for
     // 11. find the comment with the ID of 823423
+    // const comment = comments.find(function(comment) {
+    //   if(comment.id === 823423) {
+    //     return true;
+    //   }
+    // });
+    const comment = comments.find((comment) => comment.id === 823423);
+    console.log(comment);
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // 12. delete the comment with the ID of 823423
+    const index = comments.findIndex(comment => comment.id === 823423);
+    console.log(index);
+    comments.splice(index, 1);
+    console.table(comments);
   </script>
 </body>
 </html>
